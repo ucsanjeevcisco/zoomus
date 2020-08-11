@@ -57,12 +57,12 @@ class PhoneComponentV2(base.BaseComponent):
     def user_call_logs(self, **kwargs):
         util.require_keys(kwargs, "email")
 
-        if 'start_time' in kwargs:
-            kwargs["from"] = kwargs["start_time"]
-            del kwargs["start_time"]
+        if 'start_date' in kwargs:
+            kwargs["from"] = kwargs["start_date"]
+            del kwargs["start_date"]
         
-        if 'end_time' in kwargs:
-            kwargs["to"] = kwargs["end_time"]
-            del kwargs["end_time"]
+        if 'end_date' in kwargs:
+            kwargs["to"] = kwargs["end_date"]
+            del kwargs["end_date"]
 
         return self.get_request("/phone/users/{}/call_logs".format(kwargs.get("email")), params=kwargs)
